@@ -1,0 +1,27 @@
+body{
+  margin: 0;
+  padding: 0;
+background-color: #fee297;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*
+ 1) 
+  margin degerini sifir yaparak sayfa kenarlarinda istemsiz beyaz bosluklari onledik.
+Tarayicilarin varsayilan olarak eklediği kenar boslukları bunlar.
+  padding ise body ile birlikte gelen ic boslugu sifirladik.
+Bununla da iceriklerin istemsizce kaymasini onledik.
+  Yani margin dıs bosluk , padding ise ic bosluktur.
+
+2)
+  | Font                | Açıklama                                                 |
+  | ------------------- | -------------------------------------------------------- |
+  | `'Segoe UI'`        | İlk tercih                                               |
+  | `Tahoma`            | Windows eski sürümlerde yaygın                           |
+  | `Geneva`, `Verdana` | Mac & Windows uyumu, sade ve geniş fontlar               |
+  | `sans-serif`        | Hiçbiri bulunamazsa sistemin varsayılan “serifsiz” fontu |
+  
+Bu sıralama, "fall-back font system" olarak adlandırılır. Tarayıcı, sırasıyla fontları dener, bulduğunu uygular.
+
+
+*/
