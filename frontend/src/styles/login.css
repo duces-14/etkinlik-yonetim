@@ -1,0 +1,215 @@
+.login-container {
+  position: relative; /* İç öğelere göre konumlandırılabilir yap */
+  width: 1100px; /* Sabit genişlik */
+  height: 650px; /* Sabit yükseklik */
+  margin: 40px auto; /* Üstten 40px boşluk, yatayda ortala */
+  display: flex; /* İçerikleri yatay yerleştir */
+  box-sizing: border-box; /* padding ve border toplam genişliğe dahil */
+}
+
+.frame-border {
+  position: absolute; /* Konumlandırmayı üst katmanda yap */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 5px solid rgba(0,0,0,0.85); /* Yoğun siyah çerçeve */
+  border-radius: 32px; /* Kalın kenar yumuşatma */
+  z-index: 1; /* Arka katmanda tut */
+  pointer-events: none; /* Fare etkileşimini engelle */
+}
+
+.left-panel {
+  flex: 1; /* Genişliği esnek olarak kapla */
+  position: relative;
+  display: flex;
+  align-items: flex-end; /* Alt hizalama */
+  justify-content: flex-start; /* Sola hizala */
+  padding: 0;
+  z-index: 2; /* Sağ panelle aynı katmanda */
+}
+
+.right-panel {
+  width: 420px; /* Sabit genişlik */
+  background: rgba(10,10,10,0.97); /* Neredeyse siyah şeffaf arka plan */
+  color: #fff; /* Yazı rengi beyaz */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  border-top-right-radius: 32px; /* Sağ üst köşeyi yuvarla */
+  border-bottom-right-radius: 32px; /* Sağ alt köşeyi yuvarla */
+  border-left: 2px solid rgba(0,0,0,0.85); /* Sol kenara ayırıcı çizgi */
+}
+
+.form-wrapper {
+  background: none; /* Arka plan yok */
+  box-shadow: none;
+  border-radius: 0;
+  width: 320px; /* Form genişliği */
+  padding: 0;
+  color: #fff; /* Yazı rengi */
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 16px; /* İç boşluk */
+  margin-bottom: 18px; /* Alt boşluk */
+  border: 1px solid #333; /* Koyu gri kenarlık */
+  border-radius: 8px;
+  background: #181818; /* Çok koyu gri arka plan */
+  color: #fff;
+  font-size: 1rem;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px 0;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s; /* Hover geçiş efekti */
+}
+
+.login-form button:hover {
+  background: #222; /* Üzerine gelince daha koyu */
+}
+
+.error-message {
+  color: #ffb3b3; /* Açık kırmızımsı hata mesajı */
+  margin-top: 10px;
+  font-size: 0.98rem;
+}
+
+.quote-outside {
+  position: absolute;
+  left: 40px;
+  bottom: 70px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  opacity: 0.18; /* Neredeyse görünmez */
+  letter-spacing: 1px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 3;
+}
+
+.latin-note {
+  position: absolute;
+  left: 10px;
+  bottom: 30px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  opacity: 0.18;
+  letter-spacing: 1px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 3;
+}
+
+.quote-container {
+  color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.quote-upper {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  letter-spacing: 2px;
+}
+
+.quote-main {
+  font-size: 3rem;
+  margin: 1rem 0;
+  line-height: 1.2;
+}
+
+.quote-lower {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.signup-text {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.signup-text span {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.welcome-animate {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wel-part,
+.come-part {
+  display: inline-block; /* Animasyonlu harf parçaları */
+  opacity: 0; /* Başta görünmez */
+  transform: translateX(0);
+  animation-duration: 1.5s; /* Animasyon süresi */
+  animation-fill-mode: forwards; /* Son hali kalıcı olur */
+  animation-timing-function: ease-out; /* Yavaş biten geçiş */
+}
+
+.wel-part {
+  transform: translateX(-150%); /* Soldan gelsin */
+  animation-name: slide-wel; /* slide-wel animasyonunu uygula */
+}
+
+.come-part {
+  transform: translateX(150%); /* Sağdan gelsin */
+  animation-name: slide-come; /* slide-come animasyonu */
+  animation-delay: 0.1s; /* 0.1 saniye gecikmeli başla */
+}
+
+@keyframes slide-wel {
+  to {
+    transform: translateX(0); /* Başlangıç pozisyonuna dön */
+    opacity: 1; /* Görünür hale gel */
+  }
+}
+
+@keyframes slide-come {
+  to {
+    transform: translateX(0); /* Başlangıç pozisyonuna dön */
+    opacity: 1; /* Görünür hale gel */
+  }
+}
+
+.register-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+}
+
+.register-link span:hover {
+  text-decoration: underline; /* Üzerine gelince altı çizilsin */
+}

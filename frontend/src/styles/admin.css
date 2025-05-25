@@ -1,0 +1,114 @@
+.admin-container {
+  padding: 1rem; /* İç boşluk (padding) tüm kenarlardan 1 birim */
+  min-height: 100vh; /* Sayfanın en az yüksekliği, tam ekran (viewport) kadar */
+  color: white; /* Yazı rengi beyaz */
+}
+
+.admin-form {
+  display: flex; /* Öğeleri yatay olarak hizala */
+  gap: 0.5rem; /* Öğeler arası boşluk 0.5 birim */
+  margin-bottom: 1rem; /* Formun altına 1 birim boşluk bırak */
+}
+
+.admin-form input,
+.admin-form button {
+  padding: 0.4rem 0.6rem; /* İç boşluk: dikey 0.4, yatay 0.6 birim */
+  border-radius: 4px; /* Kenarları hafif yuvarla */
+  border: 1px solid #ccc; /* Açık gri çerçeve çiz */
+}
+
+.admin-form button {
+  background-color: #28a745; /* Yeşil arka plan (bootstrap success rengi) */
+  color: white; /* Yazı rengi beyaz */
+  border: none; /* Kenarlık kaldırıldı */
+}
+
+.event-card {
+  background-color: #fffbe6; /* Açık sarı arka plan */
+  padding: 0.4rem 0.6rem; /* İç boşluk: daha sıkı */
+  margin-bottom: 0.4rem; /* Alt boşluk */
+  border-radius: 6px; /* Kart kenarlarını yumuşat */
+  box-shadow: 0 4px 2px rgba(0,0,0,0.05); /* Hafif gölge efekti */
+  display: flex; /* İçeriği yatay hizala */
+  align-items: center; /* Dikeyde ortala */
+  justify-content: space-between; /* Sol-sağ uçlara yerleştir */
+  font-size: 0.95rem; /* Yazı boyutu biraz küçültülmüş */
+  color: black; /* Yazı rengi siyah */
+}
+
+.event-card .btn-group {
+  display: flex; /* Butonları yatay sırala */
+  gap: 0.4rem; /* Aralarına boşluk koy */
+}
+
+.btn-edit {
+  background-color: #ffc107; /* Sarı arka plan */
+  color: black; /* Yazı rengi siyah */
+  border: none; /* Kenarlık kaldırıldı */
+  border-radius: 4px; /* Kenarları yuvarla */
+  padding: 0.25rem 0.5rem; /* Küçük iç boşluk */
+  cursor: pointer; /* Üzerine gelince imleci el yap */
+}
+
+.btn-delete {
+  background-color: #dc3545; /* Kırmızı arka plan */
+  color: white; /* Yazı rengi beyaz */
+  border: none; /* Kenarlık kaldırıldı */
+  border-radius: 4px; /* Kenarları yuvarla */
+  padding: 0.25rem 0.5rem; /* Küçük iç boşluk */
+  cursor: pointer; /* İmleç el şekline dönüşür */
+}
+
+.pending-user {
+  background-color: #fff8dc; /* Açık sarımsı arka plan */
+  padding: 0.3rem 0.6rem; /* İç boşluk */
+  border-radius: 4px; /* Kenarları yuvarla */
+  display: flex; /* İçeriği yatay sırala */
+  justify-content: space-between; /* Sağ-sol uçlara yay */
+  align-items: center; /* Dikey ortalama */
+  margin-bottom: 0.4rem; /* Alt boşluk */
+  font-size: 0.85rem; /* Yazı boyutunu küçült */
+  font-weight: 500; /* Yazı kalınlığı: orta */
+}
+
+.pending-user button {
+  background-color: #28a745; /* Yeşil arka plan */
+  color: white; /* Yazı rengi beyaz */
+  border: none; /* Kenarlık kaldırıldı */
+  padding: 0.2rem 0.6rem; /* Küçük iç boşluk */
+  border-radius: 4px; /* Kenarları yuvarla */
+  cursor: pointer; /* İmleç el şekline dönüşür */
+  font-size: 0.8rem; /* Yazı boyutunu küçült */
+  height: 26px; /* Buton yüksekliği sabitlenmiş */
+}
+
+.pending-user span {
+  white-space: nowrap; /* Satır sonuna sığmasa bile bölünme */
+  overflow: hidden; /* Taşan kısmı gizle */
+  text-overflow: ellipsis; /* Uzunsa "..." göster */
+}
+
+.pending-user:hover {
+  background-color: #ffeeba; /* Üzerine gelince hafif sarı renkle vurgula */
+}
+
+.approval-panel {
+  position: absolute; /* Belirli konuma sabitlenmiş kutu */
+  top: 1rem; /* Üstten 1 birim uzaklık */
+  right: 1.5rem; /* Sağdan 1.5 birim uzaklık */
+  width: 250px; /* Genişlik sabit: 250px */
+  background-color: #fff3cd; /* Açık sarı arka plan */
+  padding: 0.8rem; /* İç boşluk */
+  border-left: 4px solid #ffc107; /* Sol kenara kalın sarı çizgi */
+  border-radius: 6px; /* Kenarları yuvarla */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif gölge efekti */
+  color: #856404; /* Yazı rengi: kahverengi */
+  font-size: 0.9rem; /* Yazı boyutu */
+}
+
+.approval-panel h3 {
+  margin-top: 0; /* Üst boşluk sıfır */
+  font-size: 1rem; /* Başlık boyutu */
+  margin-bottom: 0.5rem; /* Alt boşluk */
+  color: #533f03; /* Başlık rengi: koyu kahverengi */
+}

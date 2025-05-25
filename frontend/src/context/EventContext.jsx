@@ -23,7 +23,7 @@ export const EventProvider = ({ children }) => {
 
     useEffect(() => {
         fetchEvents();
-    }, []); // neden sonda koseli parantez atıyoruz ????
+    }, []); 
 
 
     return (

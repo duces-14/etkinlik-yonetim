@@ -1,3 +1,4 @@
+import "@/styles/global.css";
 import { useState } from 'react';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';

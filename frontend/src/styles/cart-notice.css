@@ -1,0 +1,33 @@
+.cart-notice {
+  position: fixed; /* Sayfa kaydırılsa bile sabit kalır (ekrana yapışık) */
+  top: 20px; /* Yukarıdan 20px aşağıda */
+  right: 20px; /* Sağdan 20px içeride */
+  background-color: #28a745; /* Arka plan yeşil (bootstrap success tonu) */
+  color: white; /* Yazı rengi beyaz */
+  padding: 12px 18px; /* Dikeyde 12px, yatayda 18px iç boşluk */
+  border-radius: 10px; /* Kenarları yumuşat (yuvarlat) */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Hafif koyu gölge efekti */
+  font-size: 0.95rem; /* Yazı boyutu */
+  font-weight: 500; /* Yazı kalınlığı: orta */
+  z-index: 999; /* Diğer öğelerin üstünde göster (öncelik yüksekliği) */
+  animation: fadeInOut 2.5s ease-in-out forwards; /* 2.5 saniyelik giriş/çıkış animasyonu */
+}
+
+@keyframes fadeInOut {
+  0% { 
+    opacity: 0; /* Başlangıçta görünmez */
+    transform: translateY(-10px); /* Yukarıdan geliyormuş gibi başla */
+  }
+  10% { 
+    opacity: 1; /* Görünür ol */
+    transform: translateY(0); /* Orijinal konumuna in */
+  }
+  90% {
+    opacity: 1; /* Görünürlüğü koru */
+    transform: translateY(0); /* Sabit kal */
+  }
+  100% {
+    opacity: 0; /* Giderek kaybol */
+    transform: translateY(-10px); /* Yukarı doğru çık */
+  }
+}

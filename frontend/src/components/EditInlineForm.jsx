@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 
-function EditInlineForm({ event, onCancel, onUpdate }) { // merak ettim de acaba fonksiyon adi ile dosya adi ayni mi olmali ?
+function EditInlineForm({ event, onCancel, onUpdate }) { 
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
-    const [price, setPrice] = useState(''); // bu bos tirnaklar ile ne yapiyorduk ??
+    const [price, setPrice] = useState(''); 
 
-    useEffect(() => {   // galiba parametre almayan bir fonksiyon icine girdik. Hatta cikti da yazdirmayacak yani bir nevi void diyebilir miyiz ?
+    useEffect(() => {   
         setTitle(event.title);
         setDate(event.date);
         setPrice(event.price);
-    }, [event]);    // [event] kosuluna gore guncelle demekti galiba !
+    }, [event]);   
 
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
             await fetch(`http://localhost:3001/events/${event.id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' }, // ne demek bu satir??
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, date, price: parseInt(price) }),
             });
             onUpdate();

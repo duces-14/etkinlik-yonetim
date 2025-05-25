@@ -2,15 +2,15 @@
   {
     "id": "e025fff1b62c7",
     "email": "admin@example.com",
-    "password": "123456",
+    "password": "admin",
     "role": "user",
     "approved": true,
     "firstLogin": true
   },
   {
     "id": "54c056a4a280a",
-    "email": "demo1@demo",
-    "password": "demo1",
+    "email": "demo@example.com",
+    "password": "demo",
     "role": "user",
     "approved": true,
     "firstLogin": true

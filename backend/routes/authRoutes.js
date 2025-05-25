@@ -4,7 +4,7 @@ const {
     loginUser,
     getAllUsers,
     approveUser
-} = require('../controllers/authController');   // reuire ile required farki , editor acisindan elbet ?
+} = require('../controllers/authController');  
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.get('/users', getAllUsers);
 router.put('/approve/:id', approveUser);
 
 
-module.exports = router;    // export degil exports yani cogul ?? HATALIymISIM :)
+module.exports = router;    

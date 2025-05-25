@@ -1,6 +1,4 @@
-/* Yeni etkinlikler eklemek icin */
-
-//import React from 'react';
+import '@/styles/admin.css';
 import { useState, useContext, useEffect } from 'react';
 import { EventContext } from '@/context/EventContext'; // Context baglantisini ekledik
 
@@ -14,8 +12,7 @@ function AdminPanel() {
   const [price, setPrice] = useState('');
   const [editingId, setEditingId] = useState(null);
 
-  const [users, setUsers] = useState([]); // parantezin icinde neden [] var ? ve bos ?
-
+  const [users, setUsers] = useState([]); 
   const fetchUsers = async () => {
     try {
       const res = await fetch("http://localhost:3001/auth/users");
@@ -82,7 +79,7 @@ function AdminPanel() {
       });
 
       // Sunucudan guncel verileri alalim.
-      fetchEvents();  // main sayfasini gunceller mi?
+      fetchEvents(); 
     } catch (error) {
       console.error("Etkinlik eklenemedi:", error);
     }
@@ -101,15 +98,16 @@ function AdminPanel() {
 
       fetchEvents(); // Listeyi sunucudan tekrar cek.
     } catch (error) {
-      console.error("Etkinlik silinemedi:", error);  // "" ile ' hangi durumlarda fark etmezdi ??
+      console.error("Etkinlik silinemedi:", error);  
     }
   };
 
   return (
-    <div style={{ padding: '1rem', backgroundColor: '#fde6a4', minHeight: '100vh' }}>
+    <div className="admin-container">
       <h2>Yeni Etkinlik Ekle</h2>
 
-      <form onSubmit={handleAddEvent} style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+      <form onSubmit={handleAddEvent} className="admin-form">
+        {/* inputlar ve butonlar aynı */}
         <input
           type="text"
           placeholder="Etkinlik Basligi"
@@ -144,14 +142,7 @@ function AdminPanel() {
 
       <ul>
         {events.map((event) => (
-          <li key={event.id} style={{
-            backgroundColor: '#fffbe6',
-            padding: '0.75rem',
-            marginBottom: '0.5rem',
-            borderRadius: '6px',
-            boxShadow: '0 10px 4px rgba(0,0,0,0.1)',
-            listStyle: 'none',
-          }}>
+          <li key={event.id} className="event-card">
             {editingId === event.id ? (
               <EditInlineForm
               event={event}
@@ -160,101 +151,34 @@ function AdminPanel() {
               />
             ) : (
               <>
-                {event.title} | {event.date} | {event.price === 0 ? 'Ücretsiz' : `${event.price} ₺`}
-                <button
-                  onClick={() => setEditingId(event.id)}
-                  style={{
-                    marginLeft: '1rem',
-                    paddind: '0.3rem 06.rem',
-                    backgroundColor: '#ffc107',
-                    color: 'black',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Düzenle
-                </button>
-                <button
-                  onClick={() => handleDelete(event.id)}
-                  style={{
-                    marginLeft: '0.5rem',
-                    padding: '0.3rem 0.6rem',
-                    backgroundColor: '#dc3545',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Sil 
-                </button>
+                <span style={{ color: 'black', fontWeight: 'bold' }}>
+                  {event.title} | {event.date} | {event.price === 0 ? 'Ücretsiz' : `${event.price} ₺`}
+                </span>
+                <div className='btn-group'>
+                  <button className="btn-edit" onClick={() => setEditingId(event.id)}>Düzenle</button>
+                  <button className="btn-delete" onClick={() => handleDelete(event.id)}>Sil</button>
+                </div>
               </>
             )}
-
-          {/*
-            <div style={{ display: 'none '}}>
-              PUT SONRASI YORUMA ALDIM - SIL butonu 
-              <button
-                onClick={() => handleDelete(event.id)}
-                style={{
-                  marginLeft: '1rem',
-                  padding: '0.3rem 0.6rem',
-                  backgroundColor: '#dc3545',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                }}
-              >
-                Sil
-              </button>
-            </div>
-            DOM'a dahil olmasin diye div'i de yoruma kattim.
-          */}
           </li>
         ))}
       </ul>
 
-
-      <h3>Onay Bekleyen Kullanicilar</h3>
-
-      <ul>
-        {users 
-          .filter(user => !user.approved)
-          .map(user => (
-            <li key={user.id} style={{
-              backgroundColor: '#f8d7da',
-              padding: '0.5rem',
-              marginBottom: '0.5rem',
-              borderRadius: '4px',
-              listStyle: 'none',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
-            }}>
-              {user.email}
-              <button
-                onClick={() => handleApprove(user.id)}
-                style={{
-                  padding: '0.3rem 0.6rem',
-                  backgroundColor: '#28a745',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer'
-                }}
-              >
-                Onayla
-              </button>
-            </li>
-          ))}
-      </ul>
-
-
-
-
+      {users.filter(user => !user.approved).length > 0 && (
+        <div className='approval-panel'>
+          <h3>Onay Bekleyen Kullanicilar</h3>
+          <ul style={{ paddingLeft: 0 }}>
+            {users.filter(user => !user.approved).map(user => (
+                <li key={user.id} className='pending-user'>
+                  <span>{user.email}</span>
+                  <button onClick={() => handleApprove(user.id)}>Onayla</button>
+                </li>
+              ))}
+          </ul>
+        </div>
+      )}  
     </div>
+  
   );
 }
 

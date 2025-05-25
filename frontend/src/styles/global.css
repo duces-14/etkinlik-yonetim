@@ -1,0 +1,15 @@
+/* global.css - Tüm sayfalarda ortak stil ayarı */
+
+body {
+  margin: 0; /* Sayfanın dış kenar boşluklarını sıfırla */
+  padding: 0; /* Sayfa iç boşluklarını sıfırla */
+  
+  background-image: url("../assets/yediGoller_Bolu.jpg"); /* Arka plan görseli olarak Yedigöller resmini kullan */
+  background-size: cover; /* Görsel ekranı tamamen kaplasın, taşsa bile sığdır */
+  background-position: center; /* Görsel ekranın ortasına hizalansın */
+  background-repeat: no-repeat; /* Görsel tekrar etmesin, sadece 1 kez kullanılsın */
+
+  font-family: Arial, sans-serif; /* Sayfa genelinde yazı tipi Arial, yoksa benzer sans-serif kullanılsın */
+  min-height: 100vh; /* Sayfanın yüksekliği her zaman ekran boyutundan az olmasın */
+  color: #000; /* Varsayılan yazı rengi: siyah */
+}

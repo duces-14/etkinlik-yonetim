@@ -1,0 +1,150 @@
+.event-card {
+  border: 1px solid #ccc; /* Gri çerçeve */
+  padding: 16px 20px; /* İç boşluk: dikey 16px, yatay 20px */
+  margin: 12px 0; /* Üst ve alt dış boşluk */
+  border-radius: 8px; /* Köşeleri yuvarlat */
+  background-color: #f8e1a2; /* Açık sarı arka plan */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Hafif gölge */
+  width: 500px; /* Kart genişliği */
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover için geçiş efektleri */
+}
+
+.event-card:hover {
+  transform: translateY(-3px); /* Hover olunca yukarı hafifçe zıpla */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Gölgeyi büyüt, belirginleşsin */
+}
+
+.event-card h3 {
+  margin: 0 0 8px; /* Alt boşluk bırak, üst boşluk olmasın */
+  font-size: 1.2rem; /* Başlık boyutu */
+}
+
+.event-card p {
+  margin: 4px 0; /* Üst ve alt küçük boşluk */
+  color: #333; /* Koyu gri yazı */
+  font-size: 1rem; /* Normal yazı boyutu */
+}
+
+.event-card button {
+  margin-top: 10px; /* Yukarıdan boşluk */
+  padding: 8px 16px; /* Dikey 8px, yatay 16px iç boşluk */
+  background-color: #163658; /* Lacivert arka plan */
+  color: white; /* Beyaz yazı */
+  border: none; /* Çerçeve yok */
+  border-radius: 6px; /* Köşeleri yuvarlat */
+  cursor: pointer; /* İmleci el simgesine çevir */
+  transition: background-color 0.2s ease; /* Hover'da yumuşak geçiş */
+}
+
+.event-card button:hover {
+  background-color: #0056b3; /* Daha parlak mavi */
+}
+
+/* -------- BAŞLIK HAREKETLİ ANİMASYON -------- */
+
+.split-title {
+  margin: 0;
+  padding: 0;
+  position: relative; /* İçindeki span'lar mutlak konumlandırılacak */
+  font-size: 4rem; /* Büyük puntolu başlık */
+  font-weight: 900; /* En kalın yazı */
+  font-family: 'Courier New', Courier, monospace; /* Daktilo fontu */
+  color: transparent; /* Ana yazı görünmez */
+  text-transform: uppercase; /* Büyük harfe çevir */
+  width: fit-content; /* İçeriğe göre genişlik */
+  margin-left: 64px;
+  margin-top: 48px;
+  user-select: none; /* Yazı seçilemesin */
+}
+
+.split-title span:nth-child(1),
+.split-title span:nth-child(2) {
+  position: absolute; /* Üste bindirilecek şekilde konumlanır */
+  left: 0;
+  width: 100%;
+  color: black; /* Yazı rengi siyah */
+  overflow: hidden; /* Taşan kısımlar görünmesin */
+  transition: transform 0.5s ease; /* Hover animasyonları için geçiş */
+}
+
+.split-title span:nth-child(1) {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); /* Üst yarıyı kes */
+  top: 0;
+}
+
+.split-title span:nth-child(2) {
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); /* Alt yarıyı kes */
+  top: 0;
+}
+
+.split-title:hover span:nth-child(1) {
+  transform: translateY(-18px); /* Hover olunca üst yarı yukarı kayar */
+}
+
+.split-title:hover span:nth-child(2) {
+  transform: translateY(18px); /* Hover olunca alt yarı aşağı kayar */
+}
+
+.split-title span:nth-child(3) {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) scaleY(0); /* Başlangıçta görünmez */
+  width: 100%;
+  text-align: center;
+  font-size: 0.45em; /* Ana başlığa göre daha küçük */
+  font-weight: 600;
+  color: #111;
+  background: #f0e7d8;
+  letter-spacing: 0.12em;
+  padding: 6px 0;
+  border-radius: 4px;
+  transition: transform 0.4s ease; /* Hover'da belirerek görünür olur */
+  pointer-events: none;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.split-title:hover span:nth-child(3) {
+  transform: translateY(-50%) scaleY(1); /* Hover olduğunda ortaya çıkar */
+}
+
+/* -------- SEPET BUTONU -------- */
+
+.sepeti-gor-button {
+  position: fixed; /* Ekranda sabit kalsın */
+  bottom: 30px; /* Alttan 30px boşluk */
+  left: 30px; /* Soldan 30px boşluk */
+  background-color: #2e7d32; /* Koyu yeşil arka plan */
+  color: #f9fbe7; /* Açık sarı yazı */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000; /* Her şeyin üstünde dursun */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* Hafif gölge efekti */
+  transition: all 0.3s ease; /* Tüm değişimlere geçiş efekti */
+}
+
+.sepeti-gor-button:hover {
+  background-color: #444; /* Hover'da koyu gri olur */
+  color: white; /* Yazı beyazlaşır */
+  transform: scale(1.05); /* Hafif büyür */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Gölge artar */
+}
+
+/* -------- ALT KÖŞE SÖZCÜĞÜ -------- */
+
+.subtle-quote {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3); /* Neredeyse silik beyaz */
+  font-style: italic;
+  font-family:'Courier New', Courier, monospace;
+  pointer-events: none; /* Tıklanamaz */
+  user-select: none; /* Seçilemez */
+}

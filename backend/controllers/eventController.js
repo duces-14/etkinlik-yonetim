@@ -51,7 +51,7 @@ const addEvent = (req, res) => {
                     console.error('Yazma hatasi:', writeErr);
                     return res.status(500).json({ error: 'Veri yazilamadi' });
                 }
-                res.status(201).json({ message: 'Etkinlik eklendi', event: newEvent }); // bu satirdan ogreneceklerim var !
+                res.status(201).json({ message: 'Etkinlik eklendi', event: newEvent }); 
             });
         } catch (parseErr) {
             console.error('JSON parse hatasi:', parseErr);
@@ -74,7 +74,7 @@ const deleteEvent = (req, res) =>{
 
         try{
             const events = JSON.parse(data);
-            const filteredEvents = events.filter(event => event.id !== eventId);    // Dikkat onemli bilgiler var
+            const filteredEvents = events.filter(event => event.id !== eventId);    
 
             if (events.length === filteredEvents.length) {
                 return res.status(404).json({ error: 'Etkinlik bulunamadi' });
@@ -108,8 +108,8 @@ const updateEvent = (req, res) => {
 
         try {
             let events = JSON.parse(data); // neden let !!?
-            //  events dizisini ileride değiştireceğiz. Eğer burada const kullansaydık, events[index] = ... gibi bir işlemde TypeError alırdık çünkü:
-            //  const ile tanımlanan değerlerin referansı değiştirilemez, let ile tanımladığımızda dizinin içeriğini değiştirebiliriz.
+            /*  events dizisini ileride değiştireceğiz. Eğer burada const kullansaydık, events[index] = ... gibi bir işlemde TypeError alırdık 
+            çünkü: const ile tanımlanan değerlerin referansı değiştirilemez, let ile tanımladığımızda dizinin içeriğini değiştirebiliriz.*/
 
             const index = events.findIndex(event => event.id === id);
             if (index === -1) {

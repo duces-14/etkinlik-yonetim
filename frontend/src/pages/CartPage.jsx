@@ -1,26 +1,27 @@
-/* Sepet Gosterimi icin kullanacagiz */
-
-// import React from 'react'; (React 17+ ile bu zorunluluk kalktı JSX'ler hatasiz calisiyor cunku otomatik ice aktarim yapiyor 17+ versiyonlarda)
+import "@/styles/cart.css";
 
 function CartPage({ cartItems }) {
   const total = cartItems.reduce((sum , item) => sum + item.price , 0);
   
 
   return (
-    <div>
-      <h1>Sepet</h1>
+ <div className="cart-container">
+      <h1 className="cart-title">Sepet</h1>
+
       {cartItems.length === 0 ? (
-        <p>Sepetiniz boş.</p>
+        <p className="empty-cart">Sepetiniz boş.</p>
       ) : (
-        <ul>
+        <ul className="cart-list">
           {cartItems.map((item, index) => (
-            <li key={index}>
-              {item.title} - {item.price} ₺
+            <li key={index} className="cart-item">
+              <span className="item-title">{item.title}</span>
+              <span className="item-price">{item.price} ₺</span>
             </li>
           ))}
         </ul>
       )}
-      <h3>Toplam Tutar: {total} ₺</h3>
+
+      <h3 className="cart-total">Toplam Tutar: {total} ₺</h3>
     </div>
   );
 }

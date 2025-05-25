@@ -1,0 +1,68 @@
+body {
+  margin: 0; /* Sayfanın kenar boşluklarını sıfırla */
+  padding: 0; /* İç boşlukları sıfırla */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern okunabilir font ailesi */
+  color: #fff; /* Varsayılan yazı rengi: beyaz */
+  background-size: cover; /* Arka plan resmi ekranı tamamen kaplasın */
+  background-position: center; /* Arka planı merkeze hizala */
+  background-repeat: no-repeat; /* Arka plan resmi tekrar etmesin */
+  min-height: 100vh; /* Sayfa yüksekliği ekran boyutundan az olmasın */
+}
+
+.cart-container {
+  max-width: 600px; /* Kart konteyneri en fazla 600px genişlikte olsun */
+  margin: 40px auto; /* Üstten 40px, yatayda ortala */
+  padding: 2rem; /* İç boşluk: tüm kenarlardan 2 birim */
+  background-color: rgba(0, 0, 0, 0.6); /* Yarı saydam siyah arka plan */
+  border-radius: 16px; /* Kenarları büyükçe yuvarlat */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Derinlik hissi veren gölge efekti */
+}
+
+.cart-title {
+  font-size: 2.4rem; /* Büyük başlık fontu */
+  text-align: center; /* Ortalanmış başlık */
+  margin-bottom: 1.5rem; /* Başlık ile altındaki öğe arasında boşluk */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Yazının altına koyu gölge efekti */
+}
+
+.empty-cart {
+  text-align: center; /* Yazıyı ortala */
+  font-size: 1.2rem; /* Orta büyüklükte yazı */
+  color: #ccc; /* Açık gri renk (zayıf durum göstergesi) */
+}
+
+.cart-list {
+  list-style: none; /* Liste işaretlerini (•) kaldır */
+  padding: 0; /* İç boşluk sıfırla */
+  margin: 0; /* Dış boşluk sıfırla */
+}
+
+.cart-item {
+  display: flex; /* Öğeleri yatay diz */
+  justify-content: space-between; /* Sağ ve sola dayalı hizala */
+  background-color: rgba(255, 255, 255, 0.1); /* Şeffaf beyaz arka plan */
+  padding: 1rem; /* İç boşluk */
+  margin-bottom: 0.8rem; /* Her öğe arasında boşluk */
+  border-radius: 10px; /* Kenarları yuvarla */
+  backdrop-filter: blur(5px); /* Arka planı cam gibi bulanıklaştır */
+}
+
+.item-title {
+  font-weight: 600; /* Yarı kalın yazı */
+  font-size: 1.1rem; /* Orta-boy yazı */
+  color: #fff; /* Beyaz yazı rengi */
+}
+
+.item-price {
+  font-size: 1.1rem; /* Aynı boyutta */
+  font-weight: 500; /* Orta kalınlıkta yazı */
+  color: #ffd700; /* Altın sarısı renk (görsel vurgu) */
+}
+
+.cart-total {
+  margin-top: 2rem; /* Üstten boşluk bırak */
+  font-size: 1.4rem; /* Toplam tutar büyükçe görünsün */
+  text-align: right; /* Yazıyı sağa hizala */
+  font-weight: bold; /* Kalın yazı */
+  color: #00ffae; /* Canlı yeşil-mavi (neon) tonuyla vurgula */
+}

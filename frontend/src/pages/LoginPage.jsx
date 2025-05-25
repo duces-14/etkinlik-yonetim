@@ -1,3 +1,4 @@
+import "@/styles/login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -33,27 +34,51 @@ function LoginPage() {
     };
 
     return (
-        <div style={{ padding: "2rem" }}>
-            <h2>Giriş Yap</h2>
-            <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "1rem", width: "300px" }}>
-                <input
-                    type="email"
-                    placeholder="E-posta"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Şifre"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Giriş</button>
-            </form>
-            {message && <p style={{ color: "red" }}>{message}</p>}      
+        <>
+
+        <div className="welcome-animate">
+            <span className="wel-part">WEL</span>
+            <span className="come-part">COME</span>
         </div>
+            <div className="quote-outside">
+            Cum te ipsum eligis
+            </div>
+            
+            <div className="login-container">
+                <div className="frame-border"></div>
+                <div className="left-panel">
+                    <div className="latin-note">
+                        omnia circa te quoque te eligunt.
+                    </div>
+                </div>
+                <div className="right-panel">
+                    <div className="form-wrapper">
+                        <h2>Giriş Yap</h2>
+                        <form onSubmit={handleLogin} className="login-form">            
+                            <input
+                                type="email"
+                                placeholder="E-posta"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <input
+                                type="password"
+                                placeholder="Şifre"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <button type="submit">Giriş</button>
+                        <p className="register-link">
+                            Kimsin? <span onClick={() => navigate('/register')} style={{ cursor: 'pointer', color: '#00f' }}>Kayıt ol</span>
+                        </p>
+                        </form>
+                        {message && <p className="error-message">{message}</p>}
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }
 

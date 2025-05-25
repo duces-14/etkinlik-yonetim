@@ -1,14 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const userFilePath = path.join(__dirname, '..', 'data', 'users.json');  // bu satir ne anlatiyor
+const userFilePath = path.join(__dirname, '..', 'data', 'users.json');  
 
-// Yardimci: JSON dosyasini oku ?
+//  JSON dosyasini oku 
 function readUsers() {
     const data = fs.readFileSync(userFilePath, 'utf8');
     return JSON.parse(data);
 }
 
-// Yardimci: JSON dosyasina yaz
+//  JSON dosyasina yaz
 function writeUsers(users) {
     fs.writeFileSync(userFilePath, JSON.stringify(users, null, 2));
 }
@@ -23,16 +23,16 @@ const registerUser = (req, res) => {
 
     const users = readUsers();
 
-    const existingUser = users.find(u => u.email === email); // ?? ( !! === 3 adet)
+    const existingUser = users.find(u => u.email === email); //  ( ! === 3 adet)
     if (existingUser) {
-        return res.status(409).json({ error: 'Bu email zaten kayitli.' });  // 409 ilk defa gecti ?
+        return res.status(409).json({ error: 'Bu email zaten kayitli.' });  // 409 ilk defa gecti 
     }
 
     const newUser = {
-        id: Math.random().toString(16).slice(2), // slice ?
+        id: Math.random().toString(16).slice(2), // slice ile basamak hassasiyetini ayarladim
         email,
         password,
-        role: "user",   // ??
+        role: "user",  
         approved: false,
         firstLogin: true
     };
@@ -46,7 +46,7 @@ const registerUser = (req, res) => {
 
 // POST /auth/login
 const loginUser = (req, res) => {
-    const { email, password } = req.body;   // body neydi ?
+    const { email, password } = req.body;   
     const users = readUsers();
 
     const user = users.find(u => u.email === email && u.password === password);    // ! == iki adet degil !
@@ -55,7 +55,7 @@ const loginUser = (req, res) => {
     }
 
     if (!user.approved) {
-        return res.status(403).json({ error: 'Hesap henuz onaylanmamis.' }); // bu kodlarin her birine calismalisin
+        return res.status(403).json({ error: 'Hesap henuz onaylanmamis.' });
     }
 
     res.status(200).json({
