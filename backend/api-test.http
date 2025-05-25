@@ -1,0 +1,55 @@
+# Tüm etkinlikleri getir 
+GET http://localhost:3001/events
+
+
+// POST yeni etkinlik ekle
+### istek
+POST http://localhost:3001/events
+Content-Type: application/json
+
+{
+  "title": "Yeni Etkinlik",
+  "date": "2025-06-30",
+  "price": 120
+}
+
+### Etkinlik silme (DELETE) 
+DELETE http://localhost:3001/events/8b22
+
+### Etkinlik güncelleme
+PUT http://localhost:3001/events/d618
+Content-Type: application/json
+
+{
+  "title": "Kurultay 2025 (Güncel)",
+  "date": "2025-06-28",
+  "price": 750
+}
+
+### CRUD ------------------------- SONRASI ASAGIDA
+
+### Yeni kullanıcı kaydı
+POST http://localhost:3001/auth/register
+Content-Type: application/json
+
+{
+  "email": "kullanici1@example.com",
+  "password": "123456"
+}
+
+### Kullanıcı girişi
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+  "email": "kullanici1@example.com",
+  "password": "123456"
+}
+
+
+### Tüm kullanıcıları getir
+GET http://localhost:3001/auth/users
+
+### Belirli kullanıcıyı onayla
+PUT http://localhost:3001/auth/approve/e025fff1b6c7
+Content-Type: application/json

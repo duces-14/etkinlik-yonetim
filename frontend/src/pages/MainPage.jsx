@@ -1,16 +1,47 @@
 {/* Etkinlik Listemiz */}
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';  // Sayfalar arasi gecis icin
+
+// import { useContext, useState } from 'react'; alttakini backend sonrasi ekledigimizden bu satiri yoruma cektim
+import { useContext, useState, useEffect } from 'react';
+//import { Link } from 'react-router-dom';  // Sayfalar arasi gecis icin
+import { Link, useNavigate } from 'react-router-dom';
 //import events from '/Users/VICTUS-14/Web_Project/frontend/src/data/events.js';  // Etkinlik verilerimizi aldık
-import { EventContext } from '/Users/VICTUS-14/Web_Project/frontend/src/context/EventContext';
-import EventCard from '/Users/VICTUS-14/Web_Project/frontend/src/components/EventCard.jsx';  // Kart bileşenini çağırdık
+import { EventContext } from '@/context/EventContext';
+import EventCard from '@/components/EventCard.jsx';  // Kart bileşenini çağırdık
 
 
 
 
 function MainPage( { onAddToCart }){  
+    const navigate = useNavigate(); // 👈 Bu satır eksikti
     const [showMessage, setShowMessage] = useState(false);
-    const { events } = useContext(EventContext);    // Etkinlik verisini kullanmazsan silik cikar tabi import ifaden !
+    const { events, setEvents } = useContext(EventContext);    // Etkinlik verisini kullanmazsan silik cikar tabi import ifaden !
+
+    // Erisim korumasi ekliyorum:
+    useEffect(() =>{
+        const user = localStorage.getItem("user");
+        if (!user) {
+            navigate("/");  // login'e attım.
+        }
+    }, []);
+
+
+    useEffect(() => {
+        fetch('http://localhost:3001/events')
+        .then((res) => res.json())
+        .then((data) => setEvents(data))
+        .catch((err) => console.error('Veri cekme hatasi: ', err));
+    }, []); // sondaki [koseli parantez] bu kodun yalnızca 1 kez calismasini saglar. Yani bilesen ekrana ilk defa yuklendiginde (mount edildiginde) çalisir, sonra asla tekrar etmez.
+    /*
+    useEffect() fonksiyonunun ikinci parametresi, bir "bağımlılık listesi (dependency array)"’dir.
+    Yani şu yapı:
+    --------------------------------------------------------
+    useEffect(() => {
+        // yapılacak şey
+    }, [BURAYA_NE_YAZARSAN_O_DEĞİŞİNCE_TEKRAR_ÇALIŞIR]);
+    --------------------------------------------------------
+    */
+
+
 
     const handleAddToCart = (event) => {
         onAddToCart(event); // Sepete ekle
@@ -20,6 +51,7 @@ function MainPage( { onAddToCart }){
         }, 2000);
     };
 
+    const sortedEvents = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
     return(
         <div>
             <h1>Etkinlik Listesi</h1>
@@ -51,7 +83,7 @@ function MainPage( { onAddToCart }){
             </button>
             </Link>
 
-            {events.map((event , index) =>(
+            {sortedEvents.map((event , index) =>(
                 <EventCard
                 key={index}
                 title={event.title}

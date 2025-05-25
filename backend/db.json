@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "id": "d618",
+      "title": "KURULTAY",
+      "date": "2025-06-25",
+      "price": 500
+    },
+    {
+      "id": "cbe3",
+      "title": "Hackathon",
+      "date": "2025-05-31",
+      "price": 0
+    },
+    {
+      "id": "324e",
+      "title": "Kitap",
+      "date": "2025-05-17",
+      "price": 70
+    }
+  ]
+}

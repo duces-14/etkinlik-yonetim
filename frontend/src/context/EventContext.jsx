@@ -1,16 +1,34 @@
-import { createContext, useState } from 'react';
-import eventsData from "/Users/VICTUS-14/Web_Project/frontend/src/data/events"; // buradan aliyorum mock veriyi
+import { createContext, useState, useEffect } from 'react'
 
-// 1. Context olusturalim ??
 export const EventContext = createContext();
 
-// 2. Provider Bileseni
-export function EventProvider({ children }) {
-    const [events, setEvents] = useState(eventsData); // baslanfic verisi olarak kullaniyoruz. Daha oncesinde mock olarak test amacli olusturmustuk.
+export const EventProvider = ({ children }) => {
+    const [events, setEvents] = useState([]);
+    const fetchEvents = async () => {
+        try{
+            const res = await fetch('http://localhost:3001/events');
+            const data = await res.json();
+            setEvents(data);
+        } catch (err) {
+            console.error('Veri cekme hatasi !', err);
+        }
+    };
+    
+/*    useEffect(() => {
+        fetch('http://localhost:3001/events')
+        .then((res) => res.json())
+        .then((data) => setEvents(data))
+        .catch((err) => console.error('Veri cekme hatası !', err));
+    }, []); tekillige son verdik */
 
-    return(
-        <EventContext.Provider value={{ events, setEvents }}>
+    useEffect(() => {
+        fetchEvents();
+    }, []); // neden sonda koseli parantez atıyoruz ????
+
+
+    return (
+        <EventContext.Provider value={{ events, setEvents, fetchEvents }}>
             {children}
         </EventContext.Provider>
     );
-}
+};
